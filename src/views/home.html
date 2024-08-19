@@ -1,0 +1,340 @@
+
+
+{{#if flash.success}}
+    <div class="alert alert-success">
+        {{flash.success}}
+    </div>
+{{/if}}
+
+{{#if flash.info}}
+    <div class="alert alert-info">
+        {{flash.info}}
+    </div>
+{{/if}}
+
+{{#if flash.error}}
+    <div class="alert alert-danger">
+        {{flash.error}}
+    </div>
+{{/if}}
+
+
+
+
+<section class="home">
+   
+    <section id="homeAprecestaao">
+        <div class="caixaPesquisa">
+            <form action="/pesquisa" method="get" id="form">
+                <input type="search" name="search" placeholder="Pesquisar">
+                <button type="submit" class="pesuisa">
+                    <p> <span class="material-symbols-outlined">
+                        search
+                        </span>
+                        buscar
+                    </p>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section id="Containerlivros">
+        {{#if search}}
+        <section class="secLivros resultadoBusca">
+            <div class="alivroT">
+                <p class="ctitulo">Resultados da busca por "{{search}}":</p>
+            </div>
+            <div class="livrocontaine">
+                {{#each resultadoBusca}}
+                <div class="caixaLivros">
+                    <div class="caixaImg">
+                        {{#if volumeInfo.imageLinks.smallThumbnail}}
+                        <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{volumeInfo.title}}">
+                        {{else}}
+                        <p>Imagem não disponível</p>
+                        {{/if}}
+                    </div>
+                    <div class="caixaInform">
+                        <div class="caixaTitulo">
+                            <p class="titulo">{{volumeInfo.title}}</p>
+                        </div>
+                        <div class="caixaAutho">
+                            <p class="autho">Autor(es): {{#each volumeInfo.authors}}{{this}}{{#unless @last}},
+                                {{/unless}}{{/each}}</p>
+                        </div>
+                        <div class="caixadescricao">
+                            <p class="descricao">{{volumeInfo.description}}</p>
+                        </div>
+                        <div class="caixabtn">
+                            <button class="btnFavorito">
+                                <p><span class="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    Favoritar
+                                </p>
+                            </button>
+                            
+                                <button class="btnInformacao" onclick="window.location.href='/detalhes?id={{id}}'">
+                                <p><span class="material-symbols-outlined">
+                                        book
+                                    </span>
+                                    Mais Informação
+                                </p>
+                                </button>
+                            
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+        {{else}}
+        <!-- Caso contrário, mostre as categorias predefinidas -->
+        <section class="secLivros Anime" id="anime">
+            <div class="alivroT">
+                <p class="ctitulo">
+                    Explore livros de Anime que irão despertar sua imaginação e emoção: " Mergulhe em histórias repletas
+                    de criaturas mágicas, heróis destemidos e batalhas épicas"!
+                </p>
+            </div>
+            <div class="livrocontaine">
+                {{#each livrosAnime}}
+                <div class="caixaLivros">
+                    <div class="caixaImg">
+                        <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{volumeInfo.title}}">
+                    </div>
+                    <div class="caixaInform">
+                        <div class="caixaTitulo">
+                            <p class="titulo">{{volumeInfo.title}}</p>
+                        </div>
+                        <div class="caixaAutho">
+                            <p class="autho">Autor(es): {{volumeInfo.authors}}</p>
+                        </div>
+                        <div class="caixadescricao">
+                            <p class="descricao">{{volumeInfo.description}}</p>
+                        </div>
+                        <div class="caixabtn">
+                            <button class="btnFavorito">
+                                <p><span class="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    Favoritar
+                                </p>
+                            </button>
+                              
+                            <button class="btnInformacao" onclick="window.location.href='/detalhes?id={{id}}'">
+                                <p><span class="material-symbols-outlined">
+                                        book
+                                    </span>
+                                    Mais Informação
+                                </p>
+                            </button>
+                           
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <section id="caixaApresetacao" >
+            <section class="cApresetacao cApresetacao-direita">
+                <div class="cApre">
+                    <p class="ctitulo" id="cApreT">
+                        Sobre a Sprint Books!
+                    </p>
+                    <p>
+                        A Sprint Books é uma plataforma inovadora que oferece uma experiência completa de pesquisa e
+                        descoberta de livros e revistas. Com uma interface intuitiva e organizada, a Sprint Book permite que
+                        você explore uma ampla variedade de títulos, desde os clássicos atemporais até as últimas
+                        publicações. Além disso, você encontrará resenhas, recomendações personalizadas e até mesmo a
+                        possibilidade de criar sua própria lista de leituras
+                    </p>
+                    <div class="btnC">
+                        <a href="https://github.com/cicero-lucas/grupo-6/blob/main/README.md" target="_blank"><button>Saiba Mais</button></a>
+                    </div>
+                </div>
+                <div class="cImg">
+                    <img src="/images/apresetacao.jpg" alt="imagem de apresentação">
+                </div>
+            </section>
+            <section class="cApresetacao cApresetacao-esquerda">
+                <div class="cImg">
+                    <img src="/images/apresetacao2.jpg" alt="imagem de apresentação">
+                </div>
+                <div class="cApre">
+                    <p class="ctitulo" id="cApreT" id="pesquisa">
+                        Faça sua Pesquisa!
+                    </p>
+                    <p>
+                        Seja você um ávido leitor em busca de novas aventuras literárias ou um estudante pesquisador em
+                        busca de fontes confiáveis, a Sprint Book está aqui para simplificar sua jornada. Navegue pelas
+                        categorias, mergulhe em sinopses envolventes e descubra obras que irão cativar sua mente e tocar seu
+                        coração.
+                    </p>
+                    <p>
+                        Então, prepare-se para explorar o vasto mundo da literatura de maneira atualizada e organizada. A
+                        Sprint Book é sua companheira ideal na busca por conhecimento, entretenimento e inspiração!
+                    </p>
+                    <div class="btnC">
+                        <a href="./#form"><button>Pesquise um livro!</button></a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+
+        <section class="secLivros Anime" id="romance">
+            <div class="alivroT">
+                <p class="ctitulo">
+                    Um romance ardente que aquece o coração e nos faz suspirar. “Descubra o poder do amor nas páginas
+                    dessas histórias apaixonantes"!
+                </p>
+            </div>
+            <div class="livrocontaine">
+                {{#each livrosRomace}}
+                <div class="caixaLivros">
+                    <div class="caixaImg">
+                        <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{volumeInfo.title}}">
+                    </div>
+                    <div class="caixaInform">
+                        <div class="caixaTitulo">
+                            <p class="titulo">{{volumeInfo.title}}</p>
+                        </div>
+                        <div class="caixaAutho">
+                            <p class="autho">Autor(es): {{volumeInfo.authors}}</p>
+                        </div>
+                        <div class="caixadescricao">
+                            <p class="descricao">{{volumeInfo.description}}</p>
+                        </div>
+                        <div class="caixabtn">
+                            <button class="btnFavorito">
+                                <p><span class="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    Favoritar
+                                </p>
+                            </button>                           
+                              <button class="btnInformacao" onclick="window.location.href='/detalhes?id={{id}}'">
+                                <p><span class="material-symbols-outlined">
+                                        book
+                                    </span>
+                                    Mais Informação
+                                </p>
+                            
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+
+        <section class="secLivros aventura" id="drama">
+            <div class="alivroT">
+                <p class="ctitulo">
+                    Embarque em narrativas intensas, onde os personagens enfrentam dilemas emocionais, perdas profundas
+                    e reviravoltas do destino. "Cada página é uma jornada de reflexão, tristeza e esperança. Descubra a
+                    força da alma humana nas páginas dessas histórias tocantes"!
+                </p>
+            </div>
+
+
+            <div class="livrocontaine">
+                {{#each livrosDrama}}
+                <div class="caixaLivros">
+                    <div class="caixaImg">
+                        <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{volumeInfo.title}}">
+                    </div>
+                    <div class="caixaInform">
+                        <div class="caixaTitulo">
+                            <p class="titulo">{{volumeInfo.title}}</p>
+                        </div>
+                        <div class="caixaAutho">
+                            <p class="autho">Autor(es): {{volumeInfo.authors}}</p>
+                        </div>
+                        <div class="caixadescricao">
+                            <p class="descricao">{{volumeInfo.description}}</p>
+                        </div>
+                        <div class="caixabtn">
+                            <button class="btnFavorito">
+                                <p><span class="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    Favoritar
+                                </p>
+                            </button>
+                            
+                            <button class="btnInformacao" onclick="window.location.href='/detalhes?id={{id}}'">
+                                <p><span class="material-symbols-outlined">
+                                        book
+                                    </span>
+                                    Mais Informação
+                                </p>
+                            </button>
+                        
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+
+        <section class="secLivros aventura" id="aventura">
+            <div class="alivroT">
+                <p class="ctitulo">
+                    Embarque em jornadas épicas, onde heróis destemidos enfrentam perigos desconhecidos. Descubra mundos
+                    exóticos, tesouros escondidos e desafios que testarão sua coragem. "Cada página é uma promessa de
+                    adrenalina e emoção. Prepare-se para viver aventuras inesquecíveis"!
+                </p>
+            </div>
+            <div class="livrocontaine">
+                {{#each livrosFantasia}}
+                <div class="caixaLivros">
+                    <div class="caixaImg">
+                        <img src="{{volumeInfo.imageLinks.smallThumbnail}}" alt="{{volumeInfo.title}}">
+                    </div>
+                    <div class="caixaInform">
+                        <div class="caixaTitulo">
+                            <p class="titulo">{{volumeInfo.title}}</p>
+                        </div>
+                        <div class="caixaAutho">
+                            <p class="autho">Autor(es): {{volumeInfo.authors}}</p>
+                        </div>
+                        <div class="caixadescricao">
+                            <p class="descricao">{{volumeInfo.description}}</p>
+                        </div>
+                        <div class="caixabtn">
+                            <button class="btnFavorito">
+                                <p><span class="material-symbols-outlined">
+                                        favorite
+                                    </span>
+                                    Favoritar
+                                </p>
+                            </button>
+                            
+                            <button class="btnInformacao" onclick="window.location.href='/detalhes?id={{id}}'">
+                                <p><span class="material-symbols-outlined">
+                                        book
+                                    </span>
+                                    Mais Informação
+                                </p>
+                            </button>
+                        
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+        {{/if}}
+    </section>
+
+    <!-- apresetação -->
+
+
+
+
+</section>

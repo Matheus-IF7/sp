@@ -1,0 +1,22 @@
+<section class="book-details">
+    <h1 class="book-title">{{book.title}}</h1>
+    <p class="book-authors"><strong>Autor(es):</strong> {{book.authors}}</p>
+    <p class="book-price"><strong>Preço:</strong> {{book.price}}</p>
+    <p class="book-description"><strong>Descrição:</strong> {{book.description}}</p>
+    <p class="book-publisher"><strong>Editora:</strong> {{book.publisher}}</p>
+    <p class="book-published-date"><strong>Data de Publicação:</strong> {{book.publishedDate}}</p>
+    <p class="book-page-count"><strong>Número de Páginas:</strong> {{book.pageCount}}</p>
+    <p class="book-categories"><strong>Categorias:</strong> {{book.categories}}</p>
+    <p class="book-average-rating"><strong>Avaliação Média:</strong> {{book.averageRating}}</p>
+    
+    {{#if book.thumbnail}}
+        <img class="book-thumbnail" src="{{book.thumbnail}}" alt="Capa do livro">
+    {{else}}
+        <p class="no-thumbnail">Imagem não disponível</p>
+    {{/if}}
+
+    <!-- Botão para visualizar a prévia do livro -->
+    <a href="/prebook.html?id={{book.googleBookId}}">
+        <button class="view-book-button"><strong>Visualizar Livro Completo</strong></button>
+    </a>
+</section>

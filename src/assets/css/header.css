@@ -1,0 +1,131 @@
+@import "./root.css";
+
+/* Estilo geral do header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    height: 13vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.082);
+}
+
+
+/* Logo */
+header .logo {
+    flex: 40%;
+    margin-left: 7%;
+}
+
+header .logo h1 {
+    font-family: var(--font-titulo);
+    color: #525252;
+    text-shadow: 1px 1px 1px rgba(20, 20, 20, 0.211);
+}
+
+/* Navegação */
+header nav {
+    flex: 35%;
+    margin-right: 7%;
+}
+
+/* Estilo para as listas de navegação */
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav ul#celular {
+    display: none;
+}
+
+header nav ul#comp {
+    display: flex;
+}
+
+header nav ul#comp li {
+    position: relative;
+    padding: 10px;
+}
+
+/* Links */
+header nav ul#comp a {
+    text-decoration: none;
+    color: #4e4d4d;
+    text-shadow: 1px 1px 1px rgba(20, 20, 20, 0.03);
+    font-family: var(--font-titulo);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.7s, border-bottom 0.5s ease-in-out;
+}
+
+header nav ul#comp a:hover {
+    color: #121212e7;
+    border-bottom: 1px solid #121212;
+}
+
+/* Estilos para o menu de dropdown */
+.dropdown {
+    position: relative;
+    margin-top: -9.5px;
+}
+
+.dropbtn {
+    color: var(--cor-texto); /* Ajuste a cor se necessário */
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--cor-header);
+    min-width: 160px;
+    z-index: 2;
+}
+
+.dropdown-content a {
+    color: var(--cor-texto);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+/* Mostrar dropdown ao passar o mouse sobre o item */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Responsivo */
+@media screen and (max-width: 768px) {
+    #celular {
+        display: block;
+    }
+    
+    #comp {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #celular {
+        display: none;
+    }
+    
+    #comp {
+        display: flex; /* Garante que a navegação seja exibida em linha */
+    }
+}

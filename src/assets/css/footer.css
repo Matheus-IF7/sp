@@ -1,0 +1,54 @@
+footer{
+    height: 200px;
+    background-color:  var( --cor-texto);
+    z-index: 2;
+    display: flex;
+    color: wheat;
+    padding: 2rem;
+}
+
+@import "./root.css";
+
+
+
+.logof{
+    flex: 40%;
+    margin-left: 7%;
+}
+
+.logof h1{
+    font-family: var(--font-titulo);
+    color: white;
+}
+ nav{
+    flex: 35%;
+    margin-right: 7%;
+}
+
+ nav ul#celularf{
+    display: none;
+}
+
+nav ul#compf{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+}
+ nav ul#compf li{
+    padding: 10px;
+}
+
+ nav ul#compf a{
+    text-decoration: none;
+    color: white;
+    font-family: var(--font-titulo);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 1s all;
+}
+
+nav ul#compf a:hover{
+   color:white;
+   border-bottom: 1px solid #121212;
+}

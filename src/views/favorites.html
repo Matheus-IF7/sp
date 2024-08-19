@@ -1,0 +1,52 @@
+
+
+    <section class="minhaListaTxt">
+        <section id="faoritosApresentacao">
+            <div class="alivroT">
+                <p class="titulo">{{title}}</p>
+            </div>
+        </section>
+    
+     <section id="Containerlivros">
+        <section class="livros-containerFav">
+            <section class="livrosSalvosFav">
+                <div class="livros-containerFav" id="livros-container">
+                    {{#if resultadoLista}}
+                    {{#each resultadoLista}}
+                    <div class="caixaLivrosFav">
+                        <div class="caixaImgFav">
+                            {{#if imageLinks}}
+                            <img src="{{imageLinks}}" alt="{{title}}">
+                            {{else}}
+                            <p>Imagem não disponível</p>
+                            {{/if}}
+                        </div>
+                        <div class="caixaInform">
+                            <div class="caixaTitulo">
+                                <p class="titulo">{{title}}</p>
+                            </div>
+                            <div class="caixaAutho">
+                                <p class="autho">Autor: {{authors}}</p>
+                            </div>
+                            <div class="caixadescricao">
+                                <p class="descricao">{{description}}</p>
+                            </div>
+                            <div class="caixabtn">
+                                <button class="btnRemove removerf" data-title="{{title}}">Remover</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                    <div class="semLivros">
+                        <p>Parece que você não tem livros salvos.</p>
+                    </div>
+                    {{/if}}
+                </div>
+            </section>
+        </section>
+    </section>
+    
+
+
+

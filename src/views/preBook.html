@@ -1,0 +1,58 @@
+<section class="book-preview">
+    <h1 class="preview-title">Pré-visualização do Livro</h1>
+    <p class="preview-description">Aqui você pode visualizar a prévia do livro diretamente pelo Google Books.</p>
+
+    <!-- Container para o Embedded Viewer -->
+    <div id="viewerCanvas" class="viewer-canvas"></div>
+
+    <!-- Voltar aos detalhes do livro -->
+    <a href="/detalhes?id={{preBook.googleBookId}}" class="back-link">
+        <button class="back-button"><strong>Voltar aos Detalhes do Livro</strong></button>
+    </a>
+</section>
+
+<!-- Incluindo o SweetAlert via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+<script type="text/javascript">
+    google.books.load();
+
+    function initialize() {
+        var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+        var urlParams = new URLSearchParams(window.location.search);
+        var bookId = urlParams.get('id');  // Obtém o ID do livro da URL
+
+        if (bookId) {
+            viewer.load(bookId, () => {
+                console.log('ID do livro não encontrado.');
+                // Usando SweetAlert para mensagem de sucesso
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'A prévia do livro foi carregada com sucesso!',
+                    confirmButtonColor: '##dc3545'
+                });
+            }, () => {
+                console.log('Livro carregado com sucesso!');
+                // Usando SweetAlert para mensagem de erro
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso',
+                    text: 'A prévia do livro foi carregada com sucesso!',
+                    confirmButtonColor: '#28a745'
+                });
+            });
+        } else {
+            console.error('ID do livro não encontrado.');
+            // Exibir mensagem de erro se o ID do livro estiver ausente
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'ID do livro não encontrado na URL.',
+                confirmButtonColor: '#dc3545'
+            });
+        }
+    }
+
+    google.books.setOnLoadCallback(initialize);
+</script>
